@@ -12,8 +12,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "paths": {
-      "#imports": ["packages/my-module/node_modules/nuxt/app.d.ts"],
-      "#app": ["packages/my-module/node_modules/nuxt/dist/app"]
+      "#imports": ["packages/vue-query-nuxt/node_modules/nuxt/app.d.ts"],
+      "#app": ["packages/vue-query-nuxt/node_modules/nuxt/dist/app"],
+      "#build/internal.vue-query-plugin-callback": ["packages/vue-query-nuxt/src/runtime/internal"]
     }
   },
   "exclude": [

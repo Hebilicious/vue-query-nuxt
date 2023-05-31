@@ -7,6 +7,11 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview"
   },
+  "dependencies": {
+    "@hebilicious/vue-query-nuxt": "latest",
+    "@tanstack/vue-query": "^4.29.11",
+    "@wundergraph/vue-query": "^0.0.1"
+  },
   "devDependencies": {
     "@nuxt/devtools": "^0.5.5",
     "nuxt": "latest"
