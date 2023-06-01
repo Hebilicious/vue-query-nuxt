@@ -94,8 +94,8 @@ importers:
         version: 3.5.2(@types/node@18.16.16)(eslint@8.41.0)(rollup@3.23.0)(typescript@5.0.4)
     devDependencies:
       '@nuxt/module-builder':
-        specifier: ^0.3.1
-        version: 0.3.1
+        specifier: ^0.4.0
+        version: 0.4.0(@nuxt/kit@3.5.2)(nuxi@3.5.2)
 
   playgrounds:
     dependencies:
@@ -2865,13 +2865,18 @@ packages:
       - rollup
       - supports-color
 
-  /@nuxt/module-builder@0.3.1:
-    resolution: {integrity: sha512-qH/F3SgIE4mobpAfJ6D9c6IqIrhEsiPM+aSdckyJgRGUbyU8urKqPR0d3DkGanN9mWy5Nk6Fwqon6jNKz97SRA==}
+  /@nuxt/module-builder@0.4.0(@nuxt/kit@3.5.2)(nuxi@3.5.2):
+    resolution: {integrity: sha512-B+UAYgFV1Hkc2ZcD7GaiKZ3SNHhyxFlXzZoBWTc9ulE0Z/+rq6RTa9fNm13BZyGhVhDCl5FN/wF/yYa1O/D2iw==}
     hasBin: true
+    peerDependencies:
+      '@nuxt/kit': ^3.5.0
+      nuxi: ^3.5.0
     dependencies:
+      '@nuxt/kit': 3.5.2(rollup@3.23.0)
       consola: 3.1.0
-      mlly: 1.2.0
+      mlly: 1.3.0
       mri: 1.2.0
+      nuxi: 3.5.2
       pathe: 1.1.0
       unbuild: 1.2.1
     transitivePeerDependencies:
@@ -5386,7 +5391,7 @@ packages:
       streamsearch: 1.1.0
 
   /bytes@3.0.0:
-    resolution: {integrity: sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=}
+    resolution: {integrity: sha512-pMhOfFDPiv9t5jjIXkHosWmkSyQbvsgEVNkz0ERHbuLh2T/7j4Mqqpz523Fe8MVY89KC6Sh/QfS2sM+SjgFDcw==}
     engines: {node: '>= 0.8'}
     dev: false
 
@@ -6674,7 +6679,7 @@ packages:
     dev: true
 
   /ee-first@1.1.1:
-    resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
+    resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
   /electron-to-chromium@1.4.385:
     resolution: {integrity: sha512-L9zlje9bIw0h+CwPQumiuVlfMcV4boxRjFIWDcLfFqTZNbkwOExBzfmswytHawObQX4OUhtNv8gIiB21kOurIg==}
@@ -10989,15 +10994,6 @@ packages:
       typescript: 5.0.4
     dev: true
 
-  /mlly@1.2.0:
-    resolution: {integrity: sha512-+c7A3CV0KGdKcylsI6khWyts/CYrGTrRVo4R/I7u/cUsy0Conxa6LUhiEzVKIw14lc2L5aiO4+SeVe4TeGRKww==}
-    dependencies:
-      acorn: 8.8.2
-      pathe: 1.1.0
-      pkg-types: 1.0.3
-      ufo: 1.1.2
-    dev: true
-
   /mlly@1.3.0:
     resolution: {integrity: sha512-HT5mcgIQKkOrZecOjOX3DJorTikWXwsBfpcr/MGBkhfWcjiqvnaL/9ppxvIUXfjT6xt4DVIAsN9fMUz1ev4bIw==}
     dependencies:
@@ -13083,7 +13079,7 @@ packages:
     dev: false
 
   /react-native-path@0.0.5:
-    resolution: {integrity: sha1-oE5Lc6U1qKfPFcbnYOJ9t3ia+xM=}
+    resolution: {integrity: sha512-WJr256xBquk7X2O83QYWKqgLg43Zg3SrgjPc/kr0gCD2LoXA+2L72BW4cmstH12GbGeutqs/eXk3jgDQ2iCSvQ==}
     dev: false
 
   /react-native@0.71.8(@babel/core@7.21.8)(@babel/preset-env@7.22.4)(react@18.2.0):
@@ -15536,7 +15532,7 @@ packages:
       which-typed-array: 1.1.9
 
   /utils-merge@1.0.1:
-    resolution: {integrity: sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=}
+    resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
     dev: false
 
