@@ -34,7 +34,7 @@ export default defineNuxtModule<VueQueryOptions>({
 
     // 4. Write pluginCallback() to .nuxt
     const writeFile = async () => {
-      let getContents = async () => "export default function pluginCallback() {}"
+      let getContents = async () => "export function pluginCallback() {}"
       if (existsSync(resolve(nuxt.options.rootDir, "vue-query.config.ts"))) {
         const configFile = resolve(nuxt.options.rootDir, "vue-query.config.ts")
         const file = await loadFile(configFile)
