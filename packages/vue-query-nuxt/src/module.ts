@@ -33,7 +33,7 @@ export default defineNuxtModule<VueQueryOptions>({
     const filename = "internal.vue-query-plugin-callback.mjs"
 
     // 4. Write pluginCallback() to .nuxt
-    const writeFile = async () => {
+    const writeFile = async ({ update = false } = {}) => {
       let getContents = async () => "export function pluginCallback() {}"
       if (existsSync(resolve(nuxt.options.rootDir, "vue-query.config.ts"))) {
         const configFile = resolve(nuxt.options.rootDir, "vue-query.config.ts")
@@ -54,6 +54,9 @@ export default defineNuxtModule<VueQueryOptions>({
         logger.info("No vue-query.config.ts file found.")
       }
       // Create file in .nuxt
+      // if (update) await updateTemplates()
+      // else addTemplate({ filename, write: true, getContents })
+
       const filePath = resolve(nuxt.options.buildDir, filename)
       if (existsSync(filePath)) await fsp.rm(filePath)
       await fsp.writeFile(filePath, await getContents())
@@ -65,16 +68,14 @@ export default defineNuxtModule<VueQueryOptions>({
       await fsp.appendFile(resolve(nuxt.options.buildDir, "types/plugins.d.ts"),
         `declare module '#app' {
           interface NuxtApp extends InjectionType<typeof import(".nuxt/${filename}").pluginCallback> { }
-        }`
-
-      )
+        }`)
     })
 
     // 5. Auto - reload the config
     nuxt.hook("builder:watch", async (event, path) => {
       if (path.includes("vue-query.config.ts")) {
         logger.info(`[vue-query] config changed '@${event}'`, path)
-        writeFile()
+        writeFile({ update: true })
         logger.success("[vue-query] config reloaded.")
       }
     })

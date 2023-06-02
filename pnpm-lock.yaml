@@ -97,11 +97,11 @@ importers:
         specifier: ^0.4.0
         version: 0.4.0(@nuxt/kit@3.5.2)(nuxi@3.5.2)
 
-  playgrounds:
+  playgrounds/advanced:
     dependencies:
       '@hebilicious/vue-query-nuxt':
         specifier: latest
-        version: link:../packages/vue-query-nuxt
+        version: link:../../packages/vue-query-nuxt
       '@tanstack/vue-query':
         specifier: ^4.29.11
         version: 4.29.11(vue@3.3.4)
@@ -115,6 +115,18 @@ importers:
       nuxt:
         specifier: latest
         version: 3.5.2(@types/node@18.16.16)(eslint@8.41.0)(rollup@3.23.0)(typescript@4.8.4)
+
+  playgrounds/simple:
+    dependencies:
+      '@hebilicious/vue-query-nuxt':
+        specifier: latest
+        version: link:../../packages/vue-query-nuxt
+      '@tanstack/vue-query':
+        specifier: ^4.29.11
+        version: 4.29.11(vue@3.3.4)
+      nuxt:
+        specifier: latest
+        version: 3.5.2(@types/node@18.16.16)(eslint@8.41.0)(rollup@3.23.0)(typescript@5.0.4)
 
 packages:
 
@@ -5391,7 +5403,7 @@ packages:
       streamsearch: 1.1.0
 
   /bytes@3.0.0:
-    resolution: {integrity: sha512-pMhOfFDPiv9t5jjIXkHosWmkSyQbvsgEVNkz0ERHbuLh2T/7j4Mqqpz523Fe8MVY89KC6Sh/QfS2sM+SjgFDcw==}
+    resolution: {integrity: sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=}
     engines: {node: '>= 0.8'}
     dev: false
 
@@ -13079,7 +13091,7 @@ packages:
     dev: false
 
   /react-native-path@0.0.5:
-    resolution: {integrity: sha512-WJr256xBquk7X2O83QYWKqgLg43Zg3SrgjPc/kr0gCD2LoXA+2L72BW4cmstH12GbGeutqs/eXk3jgDQ2iCSvQ==}
+    resolution: {integrity: sha1-oE5Lc6U1qKfPFcbnYOJ9t3ia+xM=}
     dev: false
 
   /react-native@0.71.8(@babel/core@7.21.8)(@babel/preset-env@7.22.4)(react@18.2.0):
@@ -15532,7 +15544,7 @@ packages:
       which-typed-array: 1.1.9
 
   /utils-merge@1.0.1:
-    resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
+    resolution: {integrity: sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=}
     engines: {node: '>= 0.4.0'}
     dev: false
 

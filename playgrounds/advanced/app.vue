@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const { $createHooks, $test } = useNuxtApp()
 $test.log("hello")
 </script>
