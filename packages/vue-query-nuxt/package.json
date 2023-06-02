@@ -4,6 +4,7 @@
   "version": "0.0.4",
   "license": "MIT",
   "repository": "Hebilicious/vue-query-nuxt",
+  "keywords": ["nuxt", "vue", "vue-query", "query", "tanstack", "react-query"],
   "exports": {
     ".": {
       "types": "./dist/module.d.ts",
