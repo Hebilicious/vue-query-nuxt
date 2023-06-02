@@ -5,15 +5,15 @@ export default defineNuxtConfig({
     // "@hebilicious/vue-query-nuxt"
   ],
   vueQuery: {
-    stateKey: "advanced-key",
+    // stateKey: "advanced-key",
     queryClientOptions: {
       defaultOptions: {
         queries: { staleTime: 1000 }
       }
-    },
-    vueQueryPluginOptions: {
-      queryClientKey: "custom-key"
     }
+    // vueQueryPluginOptions: {
+    //   queryClientKey: "custom-key"
+    // }
   },
   devtools: {
     enabled: true
