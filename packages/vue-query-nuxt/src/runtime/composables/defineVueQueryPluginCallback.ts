@@ -1,3 +1,7 @@
-import type { PluginCallbackParameters, ReturnedByPlugin } from "#build/internal.vue-query-plugin-callback"
+import type { PluginCallbackParameters, ReturnedByPlugin } from "../types"
 
-export const defineVueQueryPluginCallback = (callback: (pluginCallbackParameters: PluginCallbackParameters) => ReturnedByPlugin): typeof callback => callback
+export function defineVueQueryPluginCallback<T extends ReturnedByPlugin>(
+  callback: (callbackParameters: PluginCallbackParameters) => T
+): (callbackParameters: PluginCallbackParameters) => T {
+  return callback
+}

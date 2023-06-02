@@ -1,5 +1,5 @@
 import { existsSync, promises as fsp } from "node:fs"
-import { addImports, addPlugin, createResolver, defineNuxtModule, useLogger } from "@nuxt/kit"
+import { addImports, addPlugin, addTemplate, createResolver, defineNuxtModule, useLogger } from "@nuxt/kit"
 import { defu } from "defu"
 import { generateCode, loadFile } from "magicast"
 import { transform } from "esbuild"
@@ -33,7 +33,7 @@ export default defineNuxtModule<VueQueryOptions>({
     const filename = "internal.vue-query-plugin-callback.mjs"
 
     // 4. Write pluginCallback() to .nuxt
-    const writeFile = async ({ update = false } = {}) => {
+    const writeFile = async () => {
       let getContents = async () => "export function pluginCallback() {}"
       if (existsSync(resolve(nuxt.options.rootDir, "vue-query.config.ts"))) {
         const configFile = resolve(nuxt.options.rootDir, "vue-query.config.ts")
@@ -53,29 +53,42 @@ export default defineNuxtModule<VueQueryOptions>({
       else {
         logger.info("No vue-query.config.ts file found.")
       }
-      // Create file in .nuxt
-      // if (update) await updateTemplates()
-      // else addTemplate({ filename, write: true, getContents })
 
+      // @todo Make @nuxt/kit support this
+      // addTemplate({ filename, write: true, getContents, replace: true })
+
+      // Create file in .nuxt
       const filePath = resolve(nuxt.options.buildDir, filename)
       if (existsSync(filePath)) await fsp.rm(filePath)
       await fsp.writeFile(filePath, await getContents())
     }
     writeFile()
 
-    // 4. Add types at the end of plugins.d.ts
-    nuxt.hook("build:before", async () => {
-      await fsp.appendFile(resolve(nuxt.options.buildDir, "types/plugins.d.ts"),
-        `declare module '#app' {
-          interface NuxtApp extends InjectionType<typeof import(".nuxt/${filename}").pluginCallback> { }
-        }`)
+    // 4. Add types for the plugin callback.
+    const advancedTypes = "types/vue-query-nuxt-advanced.d.ts"
+    addTemplate({
+      filename: advancedTypes,
+      getContents: () => `
+      type PluginCallbackResult = Awaited<ReturnType<typeof import(".nuxt/${filename}").pluginCallback>>
+      
+      type AddPrefix<T> = {
+        [K in keyof T['provide'] as \`$\${string & K}\`]: T['provide'][K]
+      }
+      
+      declare module '#app' {
+        interface NuxtApp extends AddPrefix<PluginCallbackResult> {}
+      }
+      export { }`
+    })
+    nuxt.hook("prepare:types", ({ references }) => {
+      references.push({ path: advancedTypes })
     })
 
     // 5. Auto - reload the config
     nuxt.hook("builder:watch", async (event, path) => {
       if (path.includes("vue-query.config.ts")) {
         logger.info(`[vue-query] config changed '@${event}'`, path)
-        writeFile({ update: true })
+        writeFile()
         logger.success("[vue-query] config reloaded.")
       }
     })
