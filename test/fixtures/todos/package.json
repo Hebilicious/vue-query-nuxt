@@ -3,6 +3,6 @@
   "private": true,
   "dependencies": {
     "@tanstack/vue-query": "latest",
-    "nuxt": "latest"
+    "nuxt": "3.5.2"
   }
 }

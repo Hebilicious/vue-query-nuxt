@@ -37,16 +37,7 @@ yarn i @hebilicious/vue-query-nuxt @tanstack/vue-query
 ```ts
 // In nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ["@hebilicious/vue-query-nuxt"],
-  // These are the default values, you do not need to specify them.
-  // Refer to the vue-query docs for more information.
-  vueQuery: {
-    stateKey: "vue-query-nuxt",
-    queryClientOptions: {
-      defaultOptions: { queries: { staleTime: 5000 } } // default
-    },
-    vueQueryPluginOptions: {}
-  }
+  modules: ["@hebilicious/vue-query-nuxt"]
 })
 ```
 
@@ -59,18 +50,15 @@ import { useQueryClient, useQuery, useMutation } from '@tanstack/vue-query'
 // Access QueryClient instance
 const queryClient = useQueryClient()
 
-// Define a fetching function 
-const getTodos = () => $fetch("/api/todos")
-
 // Query
 const { isLoading, isError, data, error } = useQuery({
   queryKey: ['todos'],
-  queryFn: getTodos,
+  queryFn: () => $fetch("/api/todos"), // Use $fetch with your api routes to get typesafety 
 })
 
 // Mutation
-const mutation = useMutation({
-  mutationFn: postTodo,
+const { mutate } = useMutation({
+  mutationFn: (newTodo) => $fetch("/api/todos", { method: "POST", body: newTodo })
   onSuccess: () => {
     // Invalidate and refetch
     queryClient.invalidateQueries({ queryKey: ['todos'] })
@@ -78,7 +66,7 @@ const mutation = useMutation({
 })
 
 function onButtonClick() {
-  mutation.mutate({
+   mutate({
     id: Date.now(),
     title: 'Do Laundry',
   })
@@ -98,7 +86,23 @@ function onButtonClick() {
 
 4. Advanced configuration
 
-Create a `vue-query.config.ts` file at the root of your project.
+You can specify the options under the vueQuery key in your nuxt.config.ts file.
+Everything is typed.
+
+```ts
+// In nuxt.config.ts
+export default defineNuxtConfig({
+  modules: ["@hebilicious/vue-query-nuxt"],
+  vueQuery: {
+    stateKey: "vue-query-nuxt",
+    queryClientOptions: {
+      defaultOptions: { queries: { staleTime: 5000 } } // default
+    },
+    vueQueryPluginOptions: {}
+  }
+})
+```
+If you need to modify the plugin that installs vue query, you can create a `vue-query.config.ts` file at the root of your project.
 
 ```ts
 // vue-query.config.ts
@@ -110,8 +114,8 @@ export default defineVueQueryPluginCallback((vueQueryOptions) => {
 })
 ```
 
-This callback will be run *directly* after the Vue Query plugin is installed, so you can use it to provide something here.
-This can be useful if you want to configure something that needs the queryClient or you want to provide a library.
+This callback will be run *directly* after the Vue Query plugin is installed, so you can use it to `provide` something.
+This can be useful if you want to configure something that needs the `queryClient` or you want to provide a library in the same plugin.
 
 ## 📦 Contributing
 

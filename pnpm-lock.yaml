@@ -131,6 +131,15 @@ importers:
         specifier: latest
         version: 3.5.2(@types/node@18.16.16)(eslint@8.41.0)(rollup@3.23.0)(typescript@5.0.4)
 
+  test/fixtures/todos:
+    dependencies:
+      '@tanstack/vue-query':
+        specifier: latest
+        version: 4.29.11(vue@3.3.4)
+      nuxt:
+        specifier: 3.5.2
+        version: 3.5.2(@types/node@18.16.16)(eslint@8.41.0)(rollup@3.23.0)(typescript@5.0.4)
+
 packages:
 
   /@ampproject/remapping@2.2.1:
