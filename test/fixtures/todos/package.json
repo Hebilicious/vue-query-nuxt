@@ -1,0 +1,8 @@
+{
+  "name": "basic-fixture",
+  "private": true,
+  "dependencies": {
+    "@tanstack/vue-query": "latest",
+    "nuxt": "latest"
+  }
+}

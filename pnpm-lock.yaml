@@ -14,6 +14,9 @@ importers:
       '@antfu/ni':
         specifier: ^0.21.3
         version: 0.21.3
+      '@nuxt/test-utils':
+        specifier: ^3.5.2
+        version: 3.5.2(rollup@3.23.0)(vitest@0.31.3)(vue@3.3.4)
       '@types/node':
         specifier: ^18.16.16
         version: 18.16.16
@@ -2962,6 +2965,38 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
+
+  /@nuxt/test-utils@3.5.2(rollup@3.23.0)(vitest@0.31.3)(vue@3.3.4):
+    resolution: {integrity: sha512-b/5ZkN4Rymjt+VbKbxT0fdt9LlkEVArzy5uL7uGOLQ8LAh3tY9d23YRFgSDJSvKUkyzR2pXnIVP42auNdRiV4g==}
+    engines: {node: ^14.18.0 || >=16.10.0}
+    peerDependencies:
+      '@jest/globals': ^29.5.0
+      playwright: ^1.34.3
+      vitest: ^0.31.1
+      vue: ^3.3.4
+    peerDependenciesMeta:
+      '@jest/globals':
+        optional: true
+      playwright:
+        optional: true
+      vitest:
+        optional: true
+    dependencies:
+      '@nuxt/kit': 3.5.2(rollup@3.23.0)
+      '@nuxt/schema': 3.5.2(rollup@3.23.0)
+      consola: 3.1.0
+      defu: 6.1.2
+      execa: 7.1.1
+      get-port-please: 3.0.1
+      ofetch: 1.0.1
+      pathe: 1.1.0
+      ufo: 1.1.2
+      vitest: 0.31.3
+      vue: 3.3.4
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
 
   /@nuxt/ui-templates@1.1.1:
     resolution: {integrity: sha512-PjVETP7+iZXAs5Q8O4ivl4t6qjWZMZqwiTVogUXHoHGZZcw7GZW3u3tzfYfE1HbzyYJfr236IXqQ02MeR8Fz2w==}
