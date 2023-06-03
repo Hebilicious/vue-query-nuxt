@@ -1,3 +1,17 @@
+# [0.1.0-beta.0](https://github.com/Hebilicious/vue-query-nuxt/compare/v0.0.5...v0.1.0-beta.0) (2023-06-03)
+
+
+### Bug Fixes
+
+* .npmrc issues ([bc09fe0](https://github.com/Hebilicious/vue-query-nuxt/commit/bc09fe0b716c8425d71d8c2e89b961ecbf37e2d8))
+
+
+### Features
+
+* add auto-imports ([f75aa8c](https://github.com/Hebilicious/vue-query-nuxt/commit/f75aa8cfa3446e5a6c60e1daa6bf9d2cc6ef0edf))
+
+
+
 ## [0.0.5](https://github.com/Hebilicious/vue-query-nuxt/compare/v0.0.4...v0.0.5) (2023-06-02)
 
 
