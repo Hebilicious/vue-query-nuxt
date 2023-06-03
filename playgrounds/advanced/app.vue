@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useQuery } from "@tanstack/vue-query"
-
 const { $createHooks, $test } = useNuxtApp()
 $test.log("hello")
 

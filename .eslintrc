@@ -5,6 +5,8 @@
     "@typescript-eslint/comma-dangle": ["error", "never"],
     "comma-dangle": ["error", "never"],
     "yml/quotes": "off",
-    "antfu/if-newline": "off"
+    "antfu/if-newline": "off",
+    "curly": ["error", "multi-line"],
+    "object-property-newline": ["off", { "allowAllPropertiesOnSameLine": true}]
   }
 }

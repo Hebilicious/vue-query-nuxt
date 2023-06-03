@@ -20,9 +20,8 @@ export default defineNuxtModule<VueQueryOptions>({
 
     logger.info(`Adding ${NAME} module...`)
 
-    const { ...options } = userOptions
     // 1. Set up runtime configuration
-    nuxt.options.runtimeConfig.public[configKey] = defu(nuxt.options.runtimeConfig.public[configKey], options, {})
+    nuxt.options.runtimeConfig.public[configKey] = defu(nuxt.options.runtimeConfig.public[configKey], userOptions, {})
 
     // 2. Add plugin
     addPlugin(resolve("./runtime/plugin"))
@@ -39,7 +38,10 @@ export default defineNuxtModule<VueQueryOptions>({
         const file = await loadFile(configFile)
         if (file.exports.pluginCallback || file.exports.default) {
           logger.success("Found vue-query.config.ts file")
-          if (!file.exports.pluginCallback) file.exports.pluginCallback = file.exports.default
+          if (!file.exports.pluginCallback) {
+            file.exports.pluginCallback = file.exports.default
+          }
+
           delete file.exports.default
           const { code } = generateCode(file) // We extract it with magicast...
           const shaked = await transform(code, { treeShaking: true, loader: "ts" }) // ...we clean it with esbuild.
@@ -83,6 +85,11 @@ export default defineNuxtModule<VueQueryOptions>({
         logger.success("[vue-query] config reloaded.")
       }
     })
+
+    // 6. Auto Imports tanstack composables
+    if (userOptions.autoImports && userOptions.autoImports.length > 0) {
+      addImports(userOptions.autoImports.map(name => ({ name, from: "@tanstack/vue-query" })))
+    }
 
     logger.success(`Added ${NAME} module successfully.`)
   }

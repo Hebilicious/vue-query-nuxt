@@ -1,7 +1,7 @@
 # ⚗️ Vue Query Nuxt
 
 [![CI](https://github.com/Hebilicious/vue-query-nuxt/actions/workflows/ci.yaml/badge.svg)](https://github.com/Hebilicious/vue-query-nuxt/actions/workflows/ci.yaml)
-[![npm version](https://badge.fury.io/js/@hebilicious%2Fvue-query-nuxt.svg)](https://badge.fury.io/js/@hebilicious%2Fvue-query-nuxt)
+[![npm version](https://badge.fury.io/js/@hebilicious%20vue-query-nuxt.svg)](https://badge.fury.io/js/@hebilicious%20vue-query-nuxt)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 🚀 Welcome to __Vue Query Nuxt__!  
@@ -9,44 +9,43 @@
 This Nuxt Module automatically installs and configure Vue Query for your Nuxt application.
 It has 0 config out-of-the box and extremely lightweight.
 
-##  ⚠️ Disclaimer
+## Features
 
-_🧪 This module is in active development._
+- 0 config out-of-the box
+- All configurations options available
+- Auto Imports for Vue Query composables
 
 Refer to the [Vue Query documentation](https://tanstack.com/query/latest/docs/vue/quick-start) for more information about Vue Query.
 
-## 📦 Installation
+## 📦 How to use
 
-
-1. Use npm, pnpm or yarn to install the dependencies.
+### 1. Use npm, pnpm or yarn to install the dependencies.
 
 ```bash
+# npm
 npm i @hebilicious/vue-query-nuxt @tanstack/vue-query  
-```
-
-```bash
+# pnpm
 pnpm i @hebilicious/vue-query-nuxt @tanstack/vue-query  
+# yarn
+yarn add @hebilicious/vue-query-nuxt @tanstack/vue-query  
 ```
 
-```bash
-yarn i @hebilicious/vue-query-nuxt @tanstack/vue-query  
-```
+### 2. Add the modules to your Nuxt modules
 
-2. Add the modules to your Nuxt modules
+In `nuxt.config.ts` :
 
 ```ts
-// In nuxt.config.ts
 export default defineNuxtConfig({
   modules: ["@hebilicious/vue-query-nuxt"]
 })
 ```
 
-3. Use right away
+### 3. Use right away
+
+In a vue component :
 
 ```html
-<script setup>
-import { useQueryClient, useQuery, useMutation } from '@tanstack/vue-query'
-
+<script setup lang="ts">
 // Access QueryClient instance
 const queryClient = useQueryClient()
 
@@ -84,28 +83,38 @@ function onButtonClick() {
 </template>
 ```
 
-4. Advanced configuration
+### 4. Advanced configuration
 
 You can specify the options under the vueQuery key in your nuxt.config.ts file.
 Everything is typed.
 
+In `nuxt.config.ts` :
+
 ```ts
-// In nuxt.config.ts
 export default defineNuxtConfig({
   modules: ["@hebilicious/vue-query-nuxt"],
   vueQuery: {
-    stateKey: "vue-query-nuxt",
+    // useState key used by nuxt for the vue query state.
+    stateKey: "vue-query-nuxt", // default
+    // If you only want to import some functions, specify them here.
+    // You can pass false or an empty array to disable this feature.
+    // default: ["useQuery", "useQueries", "useInfiniteQuery", "useMutation", "useIsFetching", "useIsMutating", "useQueryClient"]
+    autoImports: ["useQuery"],
+    // Pass the vue query client options here ...
     queryClientOptions: {
       defaultOptions: { queries: { staleTime: 5000 } } // default
     },
+    // Pass the vue query plugin options here ....
     vueQueryPluginOptions: {}
   }
 })
 ```
+
 If you need to modify the plugin that installs vue query, you can create a `vue-query.config.ts` file at the root of your project.
 
+In `vue-query.config.ts` :
+
 ```ts
-// vue-query.config.ts
 import { library } from "@example/libray"
 
 export default defineVueQueryPluginCallback((vueQueryOptions) => {
@@ -114,7 +123,7 @@ export default defineVueQueryPluginCallback((vueQueryOptions) => {
 })
 ```
 
-This callback will be run *directly* after the Vue Query plugin is installed, so you can use it to `provide` something.
+This callback will be run _directly_ after the Vue Query plugin is installed, so you can use it to `provide` something.
 This can be useful if you want to configure something that needs the `queryClient` or you want to provide a library in the same plugin.
 
 ## 📦 Contributing

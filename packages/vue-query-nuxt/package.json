@@ -2,6 +2,12 @@
   "name": "@hebilicious/vue-query-nuxt",
   "type": "module",
   "version": "0.0.5",
+  "description": "A Nuxt module for Vue Query",
+  "author": {
+    "name": "Hebilicious",
+    "email": "xsh4k3@gmail.com",
+    "url": "https://twitter.com/its_hebilicious"
+  },
   "license": "MIT",
   "repository": "Hebilicious/vue-query-nuxt",
   "keywords": [
