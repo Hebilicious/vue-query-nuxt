@@ -2,5 +2,6 @@ import { defineBuildConfig } from "unbuild"
 
 export default defineBuildConfig({
   entries: ["src/module"],
-  externals: ["@tanstack/vue-query"]
+  externals: ["@tanstack/vue-query"],
+  failOnWarn: false
 })
