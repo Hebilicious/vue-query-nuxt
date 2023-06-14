@@ -1,8 +1,14 @@
 # ⚗️ Vue Query Nuxt
 
 [![CI](https://github.com/Hebilicious/vue-query-nuxt/actions/workflows/ci.yaml/badge.svg)](https://github.com/Hebilicious/vue-query-nuxt/actions/workflows/ci.yaml)
-[![npm version](https://badge.fury.io/js/@hebilicious%20vue-query-nuxt.svg)](https://badge.fury.io/js/@hebilicious%20vue-query-nuxt)
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+[npm-version-src]: https://img.shields.io/npm/v/@hebilicious/vue-query-nuxt
+[npm-version-href]: https://npmjs.com/package/@hebilicious/vue-query-nuxt
+[npm-downloads-src]: https://img.shields.io/npm/dm/@hebilicious/vue-query-nuxt
+[npm-downloads-href]: https://npmjs.com/package/@hebilicious/vue-query-nuxt
 
 🚀 Welcome to __Vue Query Nuxt__!  
 
