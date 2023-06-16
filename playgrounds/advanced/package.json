@@ -13,7 +13,7 @@
     "@wundergraph/vue-query": "^0.0.1"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.6.0",
+    "@nuxt/devtools": "^0.6.1",
     "nuxt": "latest"
   }
 }
