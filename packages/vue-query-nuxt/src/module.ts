@@ -5,6 +5,12 @@ import { generateCode, loadFile } from "magicast"
 import { transform } from "esbuild"
 import { NAME, type VueQueryOptions, configKey, defaults } from "./runtime/utils"
 
+declare module "@nuxt/schema" {
+  interface PublicRuntimeConfig {
+    [configKey]: VueQueryOptions
+  }
+}
+
 export default defineNuxtModule<VueQueryOptions>({
   meta: {
     name: NAME,
