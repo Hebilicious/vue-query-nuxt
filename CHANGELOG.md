@@ -1,3 +1,12 @@
+# [0.1.0](https://github.com/Hebilicious/vue-query-nuxt/compare/v0.1.0-beta.0...v0.1.0) (2023-06-29)
+
+
+### Bug Fixes
+
+* 3.6 types ([#12](https://github.com/Hebilicious/vue-query-nuxt/issues/12)) ([a8fcdf3](https://github.com/Hebilicious/vue-query-nuxt/commit/a8fcdf3c8c5a92ca885fb0fe073ca5dd22c99024))
+
+
+
 # [0.1.0-beta.0](https://github.com/Hebilicious/vue-query-nuxt/compare/v0.0.5...v0.1.0-beta.0) (2023-06-03)
 
 
