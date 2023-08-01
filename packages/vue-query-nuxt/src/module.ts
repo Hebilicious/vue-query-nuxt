@@ -44,10 +44,7 @@ export default defineNuxtModule<VueQueryOptions>({
         const file = await loadFile(configFile)
         if (file.exports.pluginCallback || file.exports.default) {
           logger.success("Found vue-query.config.ts file")
-          if (!file.exports.pluginCallback) {
-            file.exports.pluginCallback = file.exports.default
-          }
-
+          if (!file.exports.pluginCallback) file.exports.pluginCallback = file.exports.default
           delete file.exports.default
           const { code } = generateCode(file) // We extract it with magicast...
           const shaked = await transform(code, { treeShaking: true, loader: "ts" }) // ...we clean it with esbuild.
@@ -93,9 +90,8 @@ export default defineNuxtModule<VueQueryOptions>({
     })
 
     // 6. Auto Imports tanstack composables
-    if (userOptions.autoImports && userOptions.autoImports.length > 0) {
+    if (userOptions.autoImports && userOptions.autoImports.length > 0)
       addImports(userOptions.autoImports.map(name => ({ name, from: "@tanstack/vue-query" })))
-    }
 
     logger.success(`Added ${NAME} module successfully.`)
   }

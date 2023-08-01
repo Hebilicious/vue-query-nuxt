@@ -3,3 +3,4 @@ dist
 .nuxt
 packages/*/README.md
 .eslintcache
+.turbo
