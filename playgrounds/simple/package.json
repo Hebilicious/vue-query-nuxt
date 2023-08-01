@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@hebilicious/vue-query-nuxt": "latest",
-    "@tanstack/vue-query": "^4.29.20",
+    "@tanstack/vue-query": "^4.32.4",
     "nuxt": "latest"
   }
 }
