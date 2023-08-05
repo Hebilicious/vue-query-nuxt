@@ -126,10 +126,9 @@ import { library } from "@example/libray"
 export default defineVueQueryPluginHook(({ queryClient, nuxt }) => {
   console.log(queryClient, nuxt) // You can access the queryClient here
   return {
-    pluginReturn: { provide: { library, test: console } },
+    pluginReturn: { provide: { library, test: console } }, // nuxt plugin return value
     vueQueryPluginOptions: { queryClient } // You can pass dynamic options
   }
-  // You can use this tuple to return from the plugin and provide a custom vue query configuration
 })
 ```
 
