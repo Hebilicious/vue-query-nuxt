@@ -123,14 +123,17 @@ In `vue-query.config.ts` :
 ```ts
 import { library } from "@example/libray"
 
-export default defineVueQueryPluginCallback((vueQueryOptions) => {
-  console.log(vueQueryOptions) // You can access the queryClient here
-  return { provide: { library, test: console } }
+export default defineVueQueryPluginHook(({ queryClient, nuxt }) => {
+  console.log(queryClient, nuxt) // You can access the queryClient here
+  return {
+    pluginReturn: { provide: { library, test: console } }, // nuxt plugin return value
+    vueQueryPluginOptions: { queryClient } // You can pass dynamic options
+  }
 })
 ```
 
-This callback will be run _directly_ after the Vue Query plugin is installed, so you can use it to `provide` something.
-This can be useful if you want to configure something that needs the `queryClient` or you want to provide a library in the same plugin.
+This hook will be run within the nuxt plugin installed by the module, so you can use it to `provide` something or replace the vue query options.
+This can be useful if you need to run custom logic when the `queryClient` is being installed.
 
 ## 📦 Contributing
 
