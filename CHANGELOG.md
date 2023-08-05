@@ -1,3 +1,7 @@
+# [0.2.0](https://github.com/Hebilicious/vue-query-nuxt/compare/v0.1.0...v0.2.0) (2023-08-05)
+
+
+
 # [0.1.0](https://github.com/Hebilicious/vue-query-nuxt/compare/v0.1.0-beta.0...v0.1.0) (2023-06-29)
 
 

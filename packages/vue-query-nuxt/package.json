@@ -1,7 +1,7 @@
 {
   "name": "@hebilicious/vue-query-nuxt",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Nuxt module for Vue Query",
   "author": {
     "name": "Hebilicious",
