@@ -1,15 +1,18 @@
 import type { DehydratedState } from "@tanstack/vue-query"
 import { QueryClient, VueQueryPlugin, dehydrate, hydrate } from "@tanstack/vue-query"
 import { getVueQueryOptions } from "./utils"
+import { pluginHook } from "#build/internal.vue-query-plugin-hook"
 import { defineNuxtPlugin, useRuntimeConfig, useState } from "#imports"
-import { pluginCallback } from "#build/internal.vue-query-plugin-callback"
 
 export default defineNuxtPlugin((nuxt) => {
   const { stateKey, queryClientOptions, vueQueryPluginOptions } = getVueQueryOptions(useRuntimeConfig())
   const vueQueryState = useState<DehydratedState | null>(stateKey)
   const queryClient = new QueryClient(queryClientOptions)
 
-  nuxt.vueApp.use(VueQueryPlugin, { queryClient, ...vueQueryPluginOptions })
+  // The plugin hook is replaced by the user provided vue-query.config.ts and allow advanced modifications
+  const { pluginReturn, vueQueryPluginOptions: hookOptions } = pluginHook({ queryClient, nuxt })
+
+  nuxt.vueApp.use(VueQueryPlugin, { queryClient, ...vueQueryPluginOptions, ...hookOptions })
 
   if (process.server) {
     nuxt.hooks.hook("app:rendered", () => {
@@ -21,5 +24,5 @@ export default defineNuxtPlugin((nuxt) => {
       hydrate(queryClient, vueQueryState.value)
     })
   }
-  return pluginCallback({ queryClient })
+  return pluginReturn
 })

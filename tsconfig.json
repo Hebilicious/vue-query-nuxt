@@ -14,7 +14,7 @@
     "paths": {
       "#imports": ["packages/vue-query-nuxt/node_modules/nuxt/app.d.ts"],
       "#app": ["packages/vue-query-nuxt/node_modules/nuxt/dist/app"],
-      "#build/internal.vue-query-plugin-callback": ["packages/vue-query-nuxt/src/runtime/internal"]
+      "#build/internal.vue-query-plugin-hook": ["packages/vue-query-nuxt/src/runtime/virtual:pluginHook"]
     }
   },
   "exclude": [

@@ -17,7 +17,7 @@ const composables = [
 type VueQueryComposables = typeof composables[number]
 export interface VueQueryOptions {
   stateKey: string
-  autoImports: VueQueryComposables[] | [] | false
+  autoImports: VueQueryComposables[] | false
   queryClientOptions: QueryClientConfig | undefined
   vueQueryPluginOptions: VueQueryPluginOptions
 }
