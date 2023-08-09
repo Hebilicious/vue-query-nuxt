@@ -4,6 +4,7 @@ const { data, isLoading } = useQuery({
   queryFn: () => $fetch("/api/todos")
 })
 const { $wagmi } = useNuxtApp()
+const config = useConfig()
 </script>
 
 <template>
