@@ -20,7 +20,7 @@ export default defineVueQueryPluginHook(({ nuxt }) => {
     originalUnmount()
   }
   return {
-    pluginReturn: { provide: { wagmi: wagmiConfig } },
+    pluginReturn: { provide: { wagmi: _config } },
     vueQueryPluginOptions: { queryClient: wagmiConfig.queryClient }
   }
 })
