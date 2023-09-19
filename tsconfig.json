@@ -1,9 +1,8 @@
 {
+  "extends": "./packages/vue-query-nuxt/.nuxt/tsconfig.json",
   "compilerOptions": {
     "types": ["bun-types"],
     "baseUrl": ".",
-    "moduleResolution": "Bundler",
-    "module": "ESNext",
     "paths": {
       "#imports": ["./node_modules/nuxt/app.d.ts"],
       "#app": ["./node_modules/nuxt/dist/app"],
