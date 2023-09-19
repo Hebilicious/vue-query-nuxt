@@ -3,15 +3,10 @@ import { addImports, addPlugin, addTemplate, addTypeTemplate, createResolver, de
 import { defu } from "defu"
 import { generateCode, loadFile } from "magicast"
 import { transform } from "esbuild"
-import { NAME, type VueQueryOptions, configKey, defaults } from "./runtime/utils"
+import type { ModuleOptions } from "./runtime/utils"
+import { NAME, configKey, defaults } from "./runtime/utils"
 
-declare module "@nuxt/schema" {
-  interface PublicRuntimeConfig {
-    vueQuery: VueQueryOptions
-  }
-}
-
-export default defineNuxtModule<VueQueryOptions>({
+export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: NAME,
     configKey,

@@ -14,15 +14,15 @@ const composables = [
   "useQueryClient"
 ] as const
 
-type VueQueryComposables = typeof composables[number]
-export interface VueQueryOptions {
+type VueQueryComposables = typeof composables
+export interface ModuleOptions {
   stateKey: string
-  autoImports: VueQueryComposables[] | false
+  autoImports: VueQueryComposables | false
   queryClientOptions: QueryClientConfig | undefined
   vueQueryPluginOptions: VueQueryPluginOptions
 }
 
-export const defaults: VueQueryOptions = {
+export const defaults: ModuleOptions = {
   stateKey: NAME,
   autoImports: [...composables],
   queryClientOptions: {
@@ -30,7 +30,6 @@ export const defaults: VueQueryOptions = {
   },
   vueQueryPluginOptions: {}
 }
-
 export function getVueQueryOptions(config: RuntimeConfig) {
-  return config.public[configKey] as VueQueryOptions
+  return config.public[configKey] as ModuleOptions
 }

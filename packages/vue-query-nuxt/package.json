@@ -45,24 +45,26 @@
     "*.mjs"
   ],
   "scripts": {
-    "dts": "esno scripts/dts.ts",
-    "readme": "esno scripts/readme.ts",
-    "postbuild": "pnpm dts && pnpm readme",
+    "readme": "bun scripts/readme.ts",
+    "prebuild": "bun postinstall",
+    "postinstall": "nuxi prepare",
+    "postbuild": "bun readme",
+    "build:stub": "nuxt-build-module --stub",
     "build:module": "nuxt-build-module",
-    "build": "rimraf dist && pnpm build:module && pnpm postbuild",
+    "build": "rimraf dist && bun build:module",
     "dev": "nuxi dev"
   },
   "peerDependencies": {
     "@tanstack/vue-query": "^4.33.1",
-    "nuxt": "^3.6.5"
+    "nuxt": "^3.7.3"
   },
   "dependencies": {
-    "@nuxt/kit": "3.6.5",
+    "@nuxt/kit": "^3.7.3",
     "defu": "^6.1.2",
-    "esbuild": "^0.19.2",
-    "magicast": "^0.2.10"
+    "esbuild": "^0.19.3",
+    "magicast": "^0.2.11"
   },
   "devDependencies": {
-    "@nuxt/module-builder": "^0.4.0"
+    "@nuxt/module-builder": "^0.5.1"
   }
 }

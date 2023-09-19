@@ -1,19 +1,11 @@
 {
+  "extends": "./packages/vue-query-nuxt/.nuxt/tsconfig.json",
   "compilerOptions": {
-    "rootDir": ".",
+    "types": ["bun-types"],
     "baseUrl": ".",
-    "strict": true,
-    "module": "esnext",
-    "lib": ["esnext", "dom"],
-    "target": "esnext",
-    "moduleResolution": "node",
-    "noUnusedLocals": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
     "paths": {
-      "#imports": ["packages/vue-query-nuxt/node_modules/nuxt/app.d.ts"],
-      "#app": ["packages/vue-query-nuxt/node_modules/nuxt/dist/app"],
+      "#imports": ["./node_modules/nuxt/app.d.ts"],
+      "#app": ["./node_modules/nuxt/dist/app"],
       "#build/internal.vue-query-plugin-hook": ["packages/vue-query-nuxt/src/runtime/virtual:pluginHook"]
     }
   },

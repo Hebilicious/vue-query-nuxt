@@ -7,8 +7,9 @@ export type NuxtPluginReturn =
 | Promise<{ provide?: Record<string, unknown> | undefined }>
 | { provide?: Record<string, unknown> | undefined }
 
+// NuxtApp & _NuxtApp are different so we use any
 export interface PluginHookParameters {
-  nuxt: NuxtApp
+  nuxt: NuxtApp & any
   queryClient: QueryClient
 }
 
