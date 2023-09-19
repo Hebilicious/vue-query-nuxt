@@ -8,11 +8,11 @@
     "analyze": "nuxi analyze"
   },
   "dependencies": {
-    "@hebilicious/vue-query-nuxt": "latest",
+    "@hebilicious/vue-query-nuxt": "workspace:*",
     "@tanstack/vue-query": "4.33.1",
-    "@use-wagmi/nuxt": "^1.1.4",
-    "nuxt": "^3.6.5",
-    "use-wagmi": "^0.3.9",
-    "viem": "^1.6.7"
+    "@use-wagmi/nuxt": "^1.1.8",
+    "nuxt": "^3.7.3",
+    "use-wagmi": "^0.3.12",
+    "viem": "^1.10.14"
   }
 }

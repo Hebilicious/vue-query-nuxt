@@ -1,3 +1,3 @@
 export default defineNuxtConfig({
-  modules: ["../../../packages/vue-query-nuxt/src/module.ts"]
+  modules: ["@hebilicious/vue-query-nuxt"]
 })

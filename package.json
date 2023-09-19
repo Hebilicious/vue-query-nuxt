@@ -3,43 +3,42 @@
   "type": "module",
   "version": "0.2.1",
   "private": true,
-  "packageManager": "pnpm@8.6.12",
+  "workspaces": [
+    "packages/*",
+    "playgrounds/*",
+    "test",
+    "docs"
+  ],
   "scripts": {
-    "dev": "pnpm -r --filter=./packages/* run dev",
-    "build": "rimraf packages/*/dist && turbo run build --filter=@hebilicious/*",
-    "build:docs": "turbo run build --filter=vue-query_docs",
-    "build:all": "turbo run build",
+    "build": "rimraf packages/*/dist && cd packages/vue-query-nuxt && bun run build",
     "lint": "eslint --cache .",
-    "lint:fix": "nr lint --fix",
+    "lint:fix": "bun lint --fix",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "release": "pnpm lint:fix && bumpp -r -x \"pnpm run changelog\" --all",
     "typecheck": "tsc --noEmit",
-    "test": "vitest"
+    "test": "vitest",
+    "prepare:types": "cd packages/vue-query-nuxt && nuxi prepare",
+    "publish:ci": "pnpm -r publish --access public --no-git-checks"
   },
   "devDependencies": {
-    "@antfu/ni": "^0.21.5",
     "@hebilicious/eslint-config": "0.0.3-beta.3",
-    "@nuxt/test-utils": "^3.6.5",
-    "@types/node": "^18.17.8",
+    "@nuxt/test-utils": "^3.7.3",
+    "@types/node": "^18.17.17",
     "bumpp": "^9.2.0",
-    "conventional-changelog-cli": "^4.0.0",
+    "conventional-changelog-cli": "^4.1.0",
     "eslint": "8.47.0",
-    "esno": "^0.17.0",
-    "fast-glob": "^3.3.1",
+    "eslint-plugin-import": "^2.28.1",
     "lint-staged": "^14.0.1",
     "pnpm": "8.6.12",
-    "prettier": "^3.0.2",
+    "prettier": "^3.0.3",
     "rimraf": "^5.0.1",
     "simple-git-hooks": "^2.9.0",
     "taze": "^0.11.2",
-    "tsup": "^7.2.0",
-    "turbo": "^1.10.12",
-    "typescript": "^5.1.6",
-    "unbuild": "^1.2.1",
-    "vitest": "^0.34.2"
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.4"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
+    "pre-commit": "bunx lint-staged"
   },
   "lint-staged": {
     "*.{js,ts,tsx,vue,md}": [
