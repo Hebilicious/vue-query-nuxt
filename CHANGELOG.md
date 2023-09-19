@@ -1,3 +1,12 @@
+## [0.2.1](https://github.com/Hebilicious/vue-query-nuxt/compare/v0.2.0...v0.2.1) (2023-09-19)
+
+
+### Bug Fixes
+
+* use peer dependencies ([2598728](https://github.com/Hebilicious/vue-query-nuxt/commit/25987289453bf45f03e06ebb24e1c87fc2e6ad15))
+
+
+
 # [0.2.0](https://github.com/Hebilicious/vue-query-nuxt/compare/v0.1.0...v0.2.0) (2023-08-05)
 
 
