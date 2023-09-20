@@ -55,14 +55,14 @@
     "dev": "nuxi dev"
   },
   "peerDependencies": {
-    "@tanstack/vue-query": "^4.33.1",
+    "@tanstack/vue-query": "^4.35.3",
     "nuxt": "^3.7.3"
   },
   "dependencies": {
     "@nuxt/kit": "^3.7.3",
     "defu": "^6.1.2",
     "esbuild": "^0.19.3",
-    "magicast": "^0.2.11"
+    "magicast": "^0.3.0"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.5.1"

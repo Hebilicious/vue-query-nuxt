@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "@hebilicious/vue-query-nuxt": "workspace:*",
-    "@tanstack/vue-query": "4.33.1",
+    "@tanstack/vue-query": "4.35.3",
     "@use-wagmi/nuxt": "^1.1.8",
     "nuxt": "^3.7.3",
-    "use-wagmi": "^0.3.12",
-    "viem": "^1.10.14"
+    "use-wagmi": "^0.4.1",
+    "viem": "^1.11.0"
   }
 }
