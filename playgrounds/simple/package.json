@@ -10,6 +10,6 @@
   "dependencies": {
     "@hebilicious/vue-query-nuxt": "workspace:*",
     "@tanstack/vue-query": "^4.35.3",
-    "nuxt": "^3.7.3"
+    "nuxt": "^3.7.4"
   }
 }

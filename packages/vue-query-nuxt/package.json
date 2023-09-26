@@ -56,10 +56,10 @@
   },
   "peerDependencies": {
     "@tanstack/vue-query": "^4.35.3",
-    "nuxt": "^3.7.3"
+    "nuxt": "^3.7.4"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.7.3",
+    "@nuxt/kit": "^3.7.4",
     "defu": "^6.1.2",
     "esbuild": "^0.19.3",
     "magicast": "^0.3.0"
