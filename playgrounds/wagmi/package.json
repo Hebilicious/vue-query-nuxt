@@ -12,7 +12,7 @@
     "@tanstack/vue-query": "5.4.3",
     "@use-wagmi/nuxt": "^1.1.8",
     "nuxt": "^3.8.0",
-    "use-wagmi": "^0.4.3",
-    "viem": "^1.18.0"
+    "use-wagmi": "^0.4.4",
+    "viem": "^1.18.2"
   }
 }
