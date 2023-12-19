@@ -19,10 +19,8 @@ export default defineNuxtPlugin((nuxt) => {
       vueQueryState.value = dehydrate(queryClient)
     })
   }
-  if (process.client) {
-    nuxt.hooks.hook("app:created", () => {
-      hydrate(queryClient, vueQueryState.value)
-    })
-  }
+
+  if (process.client) hydrate(queryClient, vueQueryState.value)
+
   return pluginReturn
 })
