@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/Hebilicious/vue-query-nuxt/compare/v0.2.1...v0.3.0) (2023-12-19)
+
+
+### Features
+
+* update plugin init ([#55](https://github.com/Hebilicious/vue-query-nuxt/issues/55)) ([773728f](https://github.com/Hebilicious/vue-query-nuxt/commit/773728fc728ab1b6d932d3292d9d0295628452e5))
+
+
+
 ## [0.2.1](https://github.com/Hebilicious/vue-query-nuxt/compare/v0.2.0...v0.2.1) (2023-09-19)
 
 
