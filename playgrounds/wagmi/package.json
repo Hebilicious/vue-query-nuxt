@@ -11,7 +11,7 @@
     "@hebilicious/vue-query-nuxt": "workspace:*",
     "@tanstack/vue-query": "5.4.3",
     "@use-wagmi/nuxt": "^1.1.8",
-    "nuxt": "^3.8.0",
+    "nuxt": "^3.8.2",
     "use-wagmi": "^0.4.4",
     "viem": "^1.18.3"
   }
