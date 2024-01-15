@@ -9,8 +9,8 @@
   },
   "dependencies": {
     "@hebilicious/vue-query-nuxt": "workspace:*",
-    "@tanstack/vue-query": "^5.17.9",
-    "@wundergraph/vue-query": "^0.2.28"
+    "@tanstack/vue-query": "^5.17.11",
+    "@wundergraph/vue-query": "^0.2.29"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.8",
