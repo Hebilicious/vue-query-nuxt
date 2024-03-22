@@ -10,7 +10,7 @@
   "dependencies": {
     "@hebilicious/vue-query-nuxt": "workspace:*",
     "@tanstack/vue-query": "5.28.7",
-    "@use-wagmi/nuxt": "^1.1.8",
+    "@use-wagmi/nuxt": "^2.2.0",
     "nuxt": "^3.11.1",
     "use-wagmi": "^0.4.10",
     "viem": "^1.21.4"
