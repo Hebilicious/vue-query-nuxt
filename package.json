@@ -33,7 +33,7 @@
     "pnpm": "8.15.5",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
-    "simple-git-hooks": "^2.11.0",
+    "simple-git-hooks": "^2.11.1",
     "taze": "^0.13.3",
     "typescript": "^5.4.3",
     "vitest": "^1.4.0"
