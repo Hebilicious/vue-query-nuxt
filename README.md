@@ -29,6 +29,7 @@ Refer to the [Vue Query documentation](https://tanstack.com/query/latest/docs/vu
 
 ```bash
 npx nuxi@latest module add vue-query
+npm i @tanstack/vue-query
 ```
 
 ### 2. Add the modules to your Nuxt modules
