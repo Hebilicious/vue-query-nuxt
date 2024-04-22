@@ -55,7 +55,7 @@
     "dev": "nuxi dev"
   },
   "peerDependencies": {
-    "@tanstack/vue-query": "^5.29.0",
+    "@tanstack/vue-query": "^5.31.0",
     "nuxt": "^3.11.2"
   },
   "dependencies": {
