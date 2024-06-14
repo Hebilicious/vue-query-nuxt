@@ -11,7 +11,7 @@ export default defineNuxtModule<ModuleOptions>({
     name: NAME,
     configKey,
     compatibility: {
-      nuxt: "^3"
+      nuxt: ">=3"
     }
   },
   defaults,
