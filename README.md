@@ -111,7 +111,9 @@ export default defineNuxtConfig({
       defaultOptions: { queries: { staleTime: 5000 } } // default
     },
     // Pass the vue query plugin options here ....
-    vueQueryPluginOptions: {}
+    vueQueryPluginOptions: {
+      enableDevtoolsV6Plugin: true, // enable integrate with the official vue devtools
+    }
   }
 })
 ```
