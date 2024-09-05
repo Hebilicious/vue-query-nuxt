@@ -28,12 +28,8 @@ Refer to the [Vue Query documentation](https://tanstack.com/query/latest/docs/vu
 ### 1. Use npm, pnpm or yarn to install the dependencies.
 
 ```bash
-# npm
-npm i @hebilicious/vue-query-nuxt @tanstack/vue-query  
-# pnpm
-pnpm i @hebilicious/vue-query-nuxt @tanstack/vue-query  
-# yarn
-yarn add @hebilicious/vue-query-nuxt @tanstack/vue-query  
+npx nuxi@latest module add vue-query
+npm i @tanstack/vue-query
 ```
 
 ### 2. Add the modules to your Nuxt modules
