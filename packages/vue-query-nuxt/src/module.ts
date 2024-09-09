@@ -1,3 +1,4 @@
+import { relative, resolve } from 'node:path'
 import { existsSync } from "node:fs"
 import { addImports, addPlugin, addTemplate, addTypeTemplate, createResolver, defineNuxtModule, updateTemplates, useLogger } from "@nuxt/kit"
 import { defu } from "defu"
@@ -78,6 +79,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // 5. Auto - reload the config
     nuxt.hook("builder:watch", async (event, path) => {
+      path = relative(nuxt.options.srcDir, resolve(nuxt.options.srcDir, path))
       if (path.includes("vue-query.config.ts")) {
         logger.info(`[vue-query] config changed '@${event}'`, path)
         updateTemplates({ filter: t => t.filename === filename })
