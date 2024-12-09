@@ -52,10 +52,13 @@ In a vue component :
 const queryClient = useQueryClient()
 
 // Query
-const { isLoading, isError, data, error } = useQuery({
+const { isLoading, isError, data, suspense, error } = useQuery({
   queryKey: ['todos'],
   queryFn: () => $fetch("/api/todos"), // Use $fetch with your api routes to get typesafety 
 })
+
+//Suspense
+onServerPrefetch(suspense)
 
 // Mutation
 const { mutate } = useMutation({
