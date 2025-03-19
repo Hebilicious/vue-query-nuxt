@@ -38,8 +38,8 @@ export default defineNuxtModule<ModuleOptions>({
       filename,
       write: true,
       getContents: async () => {
-        if (existsSync(resolve(nuxt.options.rootDir, "vue-query.config.ts"))) {
-          const configFile = resolve(nuxt.options.rootDir, "vue-query.config.ts")
+        if (existsSync(resolve(nuxt.options.srcDir, "vue-query.config.ts"))) {
+          const configFile = resolve(nuxt.options.srcDir, "vue-query.config.ts")
           const file = await loadFile(configFile)
           if (file.exports.pluginHook || file.exports.default) {
             logger.success("Found vue-query.config.ts file")
