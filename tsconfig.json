@@ -6,7 +6,7 @@
     "paths": {
       "#imports": ["./node_modules/nuxt/app.d.ts"],
       "#app": ["./node_modules/nuxt/dist/app"],
-      "#build/internal.vue-query-plugin-hook": ["packages/vue-query-nuxt/src/runtime/virtual:pluginHook"]
+      "#build/internal.vue-query-plugin-hook": ["packages/vue-query-nuxt/src/runtime/pluginHook.virtual.ts"]
     }
   },
   "exclude": [
