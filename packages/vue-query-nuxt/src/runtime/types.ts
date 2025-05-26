@@ -1,5 +1,5 @@
 import type { NuxtApp } from "nuxt/app"
-import type { QueryClient, VueQueryPluginOptions } from "@tanstack/vue-query"
+import type { DehydrateOptions, HydrateOptions, QueryClient, VueQueryPluginOptions } from "@tanstack/vue-query"
 
 export type NuxtPluginReturn =
 | void
@@ -13,4 +13,4 @@ export interface PluginHookParameters {
   queryClient: QueryClient
 }
 
-export interface PluginHookReturn { pluginReturn: NuxtPluginReturn; vueQueryPluginOptions?: VueQueryPluginOptions }
+export interface PluginHookReturn { pluginReturn: NuxtPluginReturn; vueQueryPluginOptions?: VueQueryPluginOptions, hydrateOptions?: HydrateOptions, dehydrateOptions?: DehydrateOptions }
