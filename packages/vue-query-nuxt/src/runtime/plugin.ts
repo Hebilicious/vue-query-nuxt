@@ -22,5 +22,6 @@ export default defineNuxtPlugin((nuxt) => {
 
   if (import.meta.client) hydrate(queryClient, vueQueryState.value, hydrateOptions)
 
-  return pluginReturn
+  if (pluginReturn !== undefined) return pluginReturn
+  return;
 })
