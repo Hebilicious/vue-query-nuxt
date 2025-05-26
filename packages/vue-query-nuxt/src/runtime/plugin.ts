@@ -5,7 +5,7 @@ import { pluginHook } from "#build/internal.vue-query-plugin-hook"
 import { defineNuxtPlugin, useRuntimeConfig, useState } from "#imports"
 
 export default defineNuxtPlugin((nuxt) => {
-  const { stateKey, queryClientOptions, vueQueryPluginOptions, dehydrateOptions } = getVueQueryOptions(useRuntimeConfig())
+  const { stateKey, queryClientOptions, vueQueryPluginOptions } = getVueQueryOptions(useRuntimeConfig())
   const vueQueryState = useState<DehydratedState | null>(stateKey)
   const queryClient = new QueryClient(queryClientOptions)
 
@@ -16,7 +16,7 @@ export default defineNuxtPlugin((nuxt) => {
 
   if (import.meta.server) {
     nuxt.hooks.hook("app:rendered", () => {
-      vueQueryState.value = dehydrate(queryClient, dehydrateOptions)
+      vueQueryState.value = dehydrate(queryClient)
     })
   }
 

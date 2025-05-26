@@ -1,4 +1,4 @@
-import type { QueryClientConfig, VueQueryPluginOptions, DehydrateOptions } from "@tanstack/vue-query"
+import type { QueryClientConfig, VueQueryPluginOptions } from "@tanstack/vue-query"
 import type { RuntimeConfig } from "nuxt/schema"
 
 export const NAME = "vue-query-nuxt" as const
@@ -19,8 +19,7 @@ export interface ModuleOptions {
   stateKey: string
   autoImports: VueQueryComposables | false
   queryClientOptions: QueryClientConfig | undefined
-  vueQueryPluginOptions: VueQueryPluginOptions,
-  dehydrateOptions: DehydrateOptions
+  vueQueryPluginOptions: VueQueryPluginOptions
 }
 
 export const defaults: ModuleOptions = {
@@ -29,8 +28,7 @@ export const defaults: ModuleOptions = {
   queryClientOptions: {
     defaultOptions: { queries: { staleTime: 5000 } }
   },
-  vueQueryPluginOptions: {},
-  dehydrateOptions: {}
+  vueQueryPluginOptions: {}
 }
 export function getVueQueryOptions(config: RuntimeConfig) {
   return config.public[configKey] as ModuleOptions
