@@ -1,6 +1,6 @@
-import type { DehydratedState, DehydrateOptions } from "@tanstack/vue-query"
+import type { DehydratedState } from "@tanstack/vue-query"
 import { QueryClient, VueQueryPlugin, dehydrate, hydrate } from "@tanstack/vue-query"
-import { getVueQueryOptions, dehydrateOptionKeys } from "./utils"
+import { getVueQueryOptions } from "./utils"
 import { pluginHook } from "#build/internal.vue-query-plugin-hook"
 import { defineNuxtPlugin, useRuntimeConfig, useState } from "#imports"
 
@@ -16,15 +16,7 @@ export default defineNuxtPlugin((nuxt) => {
 
   if (import.meta.server) {
     nuxt.hooks.hook("app:rendered", () => {
-      vueQueryState.value = dehydrate(queryClient, dehydrateOptionKeys.reduce<DehydrateOptions>((newDehydrateOptions, key) => {
-        if (dehydrateOptions[key] !== undefined) {
-          // https://stackoverflow.com/questions/64408632/typescript-inconsistent-check-for-undefined-why-do-i-need-an-exclamation-poin
-          // https://stackoverflow.com/questions/60077761/typescript-null-check-doesnt-work-inside-array-map-function/60077855#60077855
-          const narrowedValue = dehydrateOptions[key]
-          newDehydrateOptions[key] = () => narrowedValue
-        }
-        return newDehydrateOptions
-      }, {}))
+      vueQueryState.value = dehydrate(queryClient, dehydrateOptions)
     })
   }
 

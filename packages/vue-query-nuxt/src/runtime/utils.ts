@@ -15,13 +15,12 @@ const composables = [
 ] as const
 
 type VueQueryComposables = typeof composables
-export const dehydrateOptionKeys = ['shouldDehydrateMutation', 'shouldDehydrateQuery', 'shouldRedactErrors'] as Array<keyof DehydrateOptions>;
 export interface ModuleOptions {
   stateKey: string
   autoImports: VueQueryComposables | false
   queryClientOptions: QueryClientConfig | undefined
   vueQueryPluginOptions: VueQueryPluginOptions,
-  dehydrateOptions: { [P in typeof dehydrateOptionKeys[number]]?: boolean }
+  dehydrateOptions: DehydrateOptions
 }
 
 export const defaults: ModuleOptions = {
