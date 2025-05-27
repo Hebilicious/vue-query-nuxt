@@ -22,7 +22,12 @@ export default defineNuxtPlugin((nuxt) => {
       const serializeErrors = <T extends QueryOrMutations>(queryOrMutations: T): T => queryOrMutations
         .filter(queryOrMutation => queryOrMutation.state.error instanceof Error)
         .map(queryOrMutation => {
-          queryOrMutation.state.error = serializeError(queryOrMutation.state.error) as Error | null
+          const state = queryOrMutation.state
+          state.error = serializeError(state.error) as Error | null
+          if ('fetchFailureReason' in state)
+            state.fetchFailureReason = serializeError(state.fetchFailureReason) as Error | null
+          if ('failureReason' in state)
+            state.failureReason = serializeError(state.failureReason) as Error | null
           return queryOrMutation
         }) as T
       const dehydrated = dehydrate(queryClient, dehydrateOptions)
@@ -36,7 +41,12 @@ export default defineNuxtPlugin((nuxt) => {
     const deserializeErrors = <T extends QueryOrMutations>(queryOrMutations: T): T => queryOrMutations
         .filter(queryOrMutation => isErrorLike(queryOrMutation.state.error))
         .map(queryOrMutation => {
-          queryOrMutation.state.error = deserializeError(queryOrMutation.state.error)
+          const state = queryOrMutation.state
+          state.error = deserializeError(state.error)
+          if ('fetchFailureReason' in state)
+            state.fetchFailureReason = deserializeError(state.fetchFailureReason)
+          if ('failureReason' in state)
+            state.failureReason = deserializeError(state.failureReason)
           return queryOrMutation
         }) as T
     const dehydrated = vueQueryState.value
