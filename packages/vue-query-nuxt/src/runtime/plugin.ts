@@ -11,7 +11,14 @@ export default defineNuxtPlugin((nuxt) => {
   const queryClient = new QueryClient(queryClientOptions)
 
   // The plugin hook is replaced by the user provided vue-query.config.ts and allow advanced modifications
-  const { pluginReturn, vueQueryPluginOptions: hookOptions, hydrateOptions, dehydrateOptions } = pluginHook({ queryClient, nuxt })
+  const {
+    pluginReturn,
+    vueQueryPluginOptions: hookOptions,
+    hydrateOptions,
+    dehydrateOptions,
+    serializeErrorOptions,
+    deserializeErrorOptions
+  } = pluginHook({ queryClient, nuxt })
 
   nuxt.vueApp.use(VueQueryPlugin, { queryClient, ...vueQueryPluginOptions, ...hookOptions })
 
@@ -23,11 +30,11 @@ export default defineNuxtPlugin((nuxt) => {
         .filter(queryOrMutation => queryOrMutation.state.error instanceof Error)
         .map(queryOrMutation => {
           const state = queryOrMutation.state
-          state.error = serializeError(state.error) as Error | null
+          state.error = serializeError(state.error, serializeErrorOptions) as Error | null
           if ('fetchFailureReason' in state)
-            state.fetchFailureReason = serializeError(state.fetchFailureReason) as Error | null
+            state.fetchFailureReason = serializeError(state.fetchFailureReason, serializeErrorOptions) as Error | null
           if ('failureReason' in state)
-            state.failureReason = serializeError(state.failureReason) as Error | null
+            state.failureReason = serializeError(state.failureReason, serializeErrorOptions) as Error | null
           return queryOrMutation
         }) as T
       const dehydrated = dehydrate(queryClient, dehydrateOptions)
@@ -42,11 +49,11 @@ export default defineNuxtPlugin((nuxt) => {
         .filter(queryOrMutation => isErrorLike(queryOrMutation.state.error))
         .map(queryOrMutation => {
           const state = queryOrMutation.state
-          state.error = deserializeError(state.error)
+          state.error = deserializeError(state.error, deserializeErrorOptions)
           if ('fetchFailureReason' in state)
-            state.fetchFailureReason = deserializeError(state.fetchFailureReason)
+            state.fetchFailureReason = deserializeError(state.fetchFailureReason, deserializeErrorOptions)
           if ('failureReason' in state)
-            state.failureReason = deserializeError(state.failureReason)
+            state.failureReason = deserializeError(state.failureReason, deserializeErrorOptions)
           return queryOrMutation
         }) as T
     const dehydrated = vueQueryState.value
