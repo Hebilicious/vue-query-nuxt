@@ -27,13 +27,13 @@ export default defineNuxtPlugin((nuxt) => {
   if (import.meta.server) {
     nuxt.hooks.hook("app:rendered", () => {
       const serializeErrors = <T extends QueryOrMutations>(queryOrMutations: T): T => queryOrMutations
-        .filter(queryOrMutation => queryOrMutation.state.error instanceof Error)
         .map(queryOrMutation => {
           const state = queryOrMutation.state
-          state.error = serializeError(state.error, serializeErrorOptions) as Error | null
-          if ('fetchFailureReason' in state)
+          if (state.error instanceof Error)
+            state.error = serializeError(state.error, serializeErrorOptions) as Error | null
+          if ('fetchFailureReason' in state && state.fetchFailureReason instanceof Error)
             state.fetchFailureReason = serializeError(state.fetchFailureReason, serializeErrorOptions) as Error | null
-          if ('failureReason' in state)
+          if ('failureReason' in state && state.failureReason instanceof Error)
             state.failureReason = serializeError(state.failureReason, serializeErrorOptions) as Error | null
           return queryOrMutation
         }) as T
@@ -46,13 +46,13 @@ export default defineNuxtPlugin((nuxt) => {
 
   if (import.meta.client) {
     const deserializeErrors = <T extends QueryOrMutations>(queryOrMutations: T): T => queryOrMutations
-        .filter(queryOrMutation => isErrorLike(queryOrMutation.state.error))
         .map(queryOrMutation => {
           const state = queryOrMutation.state
-          state.error = deserializeError(state.error, deserializeErrorOptions)
-          if ('fetchFailureReason' in state)
+          if (isErrorLike(state.error))
+            state.error = deserializeError(state.error, deserializeErrorOptions)
+          if ('fetchFailureReason' in state && isErrorLike(state.fetchFailureReason))
             state.fetchFailureReason = deserializeError(state.fetchFailureReason, deserializeErrorOptions)
-          if ('failureReason' in state)
+          if ('failureReason' in state && isErrorLike(state.failureReason))
             state.failureReason = deserializeError(state.failureReason, deserializeErrorOptions)
           return queryOrMutation
         }) as T
