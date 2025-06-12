@@ -15,6 +15,6 @@ export interface PluginHookReturn {
   vueQueryPluginOptions?: VueQueryPluginOptions,
   hydrateOptions?: HydrateOptions,
   dehydrateOptions?: DehydrateOptions,
-  serializeErrorOptions?: Options,
-  deserializeErrorOptions?: Options
+  serializeErrorOptions?: Omit<Options, 'useToJSON'>,
+  deserializeErrorOptions?: Omit<Options, 'useToJSON'>
 }

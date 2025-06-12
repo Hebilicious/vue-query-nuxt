@@ -1,6 +1,6 @@
 import type { DehydratedState } from "@tanstack/vue-query"
 import { QueryClient, VueQueryPlugin, dehydrate, hydrate } from "@tanstack/vue-query"
-import { isErrorLike, deserializeError, serializeError } from 'serialize-error';
+import { isErrorLike, deserializeError, serializeError, type Options } from 'serialize-error'
 import { getVueQueryOptions } from "./utils"
 import { pluginHook } from "#build/internal.vue-query-plugin-hook"
 import { defineNuxtPlugin, useRuntimeConfig, useState } from "#imports"
@@ -16,9 +16,14 @@ export default defineNuxtPlugin((nuxt) => {
     vueQueryPluginOptions: hookOptions,
     hydrateOptions,
     dehydrateOptions,
+    ...pluginHookReturn
+  } = pluginHook({ queryClient, nuxt })
+  let {
     serializeErrorOptions,
     deserializeErrorOptions
-  } = pluginHook({ queryClient, nuxt })
+  } = pluginHookReturn
+  serializeErrorOptions = { ...serializeErrorOptions, useToJSON: false } as Options
+  deserializeErrorOptions = { ...deserializeErrorOptions, useToJSON: false } as Options
 
   nuxt.vueApp.use(VueQueryPlugin, { queryClient, ...vueQueryPluginOptions, ...hookOptions })
 
@@ -63,5 +68,5 @@ export default defineNuxtPlugin((nuxt) => {
   }
 
   if (pluginReturn !== undefined) return pluginReturn
-  return;
+  return
 })
