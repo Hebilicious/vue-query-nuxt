@@ -14,7 +14,7 @@ const composables = [
   "useQueryClient"
 ] as const
 
-type VueQueryComposables = typeof composables
+type VueQueryComposables = typeof composables[number][] | false
 export interface ModuleOptions {
   stateKey: string
   autoImports: VueQueryComposables | false
