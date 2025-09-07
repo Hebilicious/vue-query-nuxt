@@ -56,7 +56,7 @@ export default defineNuxtModule<ModuleOptions>({
         else {
           logger.info("No vue-query.config.ts file found.")
         }
-        return "export function pluginHook() { return { pluginReturn: null, vueQueryPluginOptions: null}}"
+        return "export function pluginHook() { return {} }"
       }
     })
 

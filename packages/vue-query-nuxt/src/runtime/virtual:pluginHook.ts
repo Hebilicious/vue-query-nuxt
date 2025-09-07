@@ -6,5 +6,5 @@ import type { PluginHookParameters, PluginHookReturn } from "./types"
 
 // eslint-disable-next-line unused-imports/no-unused-vars
 export function pluginHook(pluginHookParameters: PluginHookParameters): PluginHookReturn {
-  return { pluginReturn: {}, vueQueryPluginOptions: {} }
+  return {}
 }
