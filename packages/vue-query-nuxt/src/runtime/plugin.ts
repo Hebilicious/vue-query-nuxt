@@ -10,17 +10,18 @@ export default defineNuxtPlugin((nuxt) => {
   const queryClient = new QueryClient(queryClientOptions)
 
   // The plugin hook is replaced by the user provided vue-query.config.ts and allow advanced modifications
-  const { pluginReturn, vueQueryPluginOptions: hookOptions } = pluginHook({ queryClient, nuxt })
+  const { pluginReturn, vueQueryPluginOptions: hookOptions, hydrateOptions, dehydrateOptions } = pluginHook({ queryClient, nuxt })
 
   nuxt.vueApp.use(VueQueryPlugin, { queryClient, ...vueQueryPluginOptions, ...hookOptions })
 
   if (import.meta.server) {
     nuxt.hooks.hook("app:rendered", () => {
-      vueQueryState.value = dehydrate(queryClient)
+      vueQueryState.value = dehydrate(queryClient, dehydrateOptions)
     })
   }
 
-  if (import.meta.client) hydrate(queryClient, vueQueryState.value)
+  if (import.meta.client) hydrate(queryClient, vueQueryState.value, hydrateOptions)
 
-  return pluginReturn
+  if (pluginReturn !== undefined) return pluginReturn
+  return;
 })
