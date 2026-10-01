@@ -61,7 +61,7 @@
   "dependencies": {
     "@nuxt/kit": "^3.11.2",
     "defu": "^6.1.4",
-    "esbuild": "^0.20.2",
+    "esbuild": "^0.25.0",
     "magicast": "^0.3.4"
   },
   "devDependencies": {
